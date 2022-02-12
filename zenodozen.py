@@ -1,3 +1,28 @@
+"""
+Zenodozen
+
+A client for the zenodo API.
+
+Example use case
+================
+
+    from zenodozen import *
+
+    # -- List of files you want to add
+    filelist = glob('./all_posterior_samples/GW*')
+
+    #-- Read token
+    token = readtoken(fn='/path/to/token/.zenodo-sandbox')
+
+    #-- Get record of existing Zenodo entry
+    response = retrieve('748570', token)
+
+    # -- Add a bunch of files
+    for fn in filelist:
+        r =  push_file(fn, token, response, scope='IGWN', project='GWTC2', version='1')
+
+(c) Jonah Kanner
+"""
 
 import requests
 import json
@@ -150,24 +175,3 @@ def delete_files(token, response):
 
     print("Deleted files from draft")
     return filelist
-
-
-"""
-Example use case
-
-from zenodozen import *
-
-# -- List of files you want to add
-filelist = glob('./all_posterior_samples/GW*')
-
-#-- Read token
-token = readtoken(fn='/home/jonah.kanner/.zenodo-sandbox')
-
-#-- Get record of existing Zenodo entry
-response = retrieve('748570', token) 
-
-# -- Add a bunch of files
-for fn in filelist:
-    r =  push_file(fn, token, response, scope='IGWN', project='GWTC2', version='1')
-
-"""
