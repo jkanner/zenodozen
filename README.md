@@ -1,2 +1,4 @@
+<img src='/ZenodoZen-logo.png' width='30%'/>
+
 # zenodozen
-A client for the zenodo API.
+
